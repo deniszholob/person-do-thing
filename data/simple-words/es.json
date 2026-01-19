@@ -1,6 +1,21 @@
 [
   ["persona", "lugar", "cosa"],
-  ["hacer", "sentir", "ir", "tener", "gustar", "crear", "decir", "ver", "pensar", "usar", "querer"],
-  ["grande", "lejos", "rápido", "bueno", "difícil", "caliente", "muchos", "real", "más", "mismo"],
-  ["después", "antes", "otro", "en", "arriba", "otra vez", "y", "pero", "sí", "no"]
+  [
+    "hacer", "gustar", "pensar",
+    "sentir", "crear", "usar",
+    "ir", "decir", "querer",
+    "tener", "ver"
+  ],
+  [
+    "grande","difícil",
+    "lejos", "caliente",
+    "rápido", "muchos",
+    "bueno", "real"
+  ],
+  [
+    "después", "en", "y",
+    "antes", "arriba","pero",
+    "más", "mismo", "sí",
+    "otro", "otra vez", "no"
+  ]
 ]

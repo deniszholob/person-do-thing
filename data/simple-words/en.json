@@ -1,6 +1,21 @@
 [
   ["person", "place", "thing"],
-  ["do", "feel", "go", "have", "like", "make", "say", "see", "think", "use", "want"],
-  ["big", "far", "fast", "good", "hard", "hot", "many", "real", "more", "same"],
-  ["after", "before", "other", "in", "up", "again", "and", "but", "yes", "no"]
+  [
+    "do", "like", "think",
+    "feel", "make", "use",
+    "go", "say", "want",
+    "have" ,"see"
+  ],
+  [
+    "big", "hard",
+    "far", "hot",
+    "fast", "many",
+    "good", "real"
+  ],
+  [
+    "after", "in", "and",
+    "before", "up", "but",
+    "more", "same", "yes",
+    "other", "again", "no"
+  ]
 ]
