@@ -9,7 +9,7 @@ async function loadJson(path) {
 async function loadTargetCategory(category, lang) {
   TARGET_WORDS[category] ??= {};
   if (!TARGET_WORDS[category][lang]) {
-    TARGET_WORDS[category][lang] = await loadJson(`/data/target-words/${category}/${lang}.json`);
+    TARGET_WORDS[category][lang] = await loadJson(`data/target-words/${category}/${lang}.json`);
   }
   return TARGET_WORDS[category][lang];
 }
@@ -51,9 +51,9 @@ function saveSettings() {
     .filter(c => c.checked).map(c => c.value);
 
   const settings = {
-    language: languageEl.value,
-    secondLanguageEnabled: secondLangEnabledEl.checked,
-    secondLanguage: secondLangEl.value,
+    language: languageEl.value ?? 'English',
+    secondLanguageEnabled: secondLangEnabledEl.checked ?? true,
+    secondLanguage: secondLangEl.value ?? 'English',
     timerEnabled: document.getElementById("timerEnabled").checked,
     timerMinutes: document.getElementById("timerMinutes").value,
     categories,
@@ -133,11 +133,10 @@ async function renderSimpleWords() {
   const showLang2 = secondLangEnabledEl.checked;
   const lang2 = secondLangEl.value;
 
-  if (!SIMPLE_WORDS[lang1]) SIMPLE_WORDS[lang1] = await loadJson(`/data/simple-words/${lang1}.json`);
-  if (showLang2 && !SIMPLE_WORDS[lang2]) SIMPLE_WORDS[lang2] = await loadJson(`/data/simple-words/${lang2}.json`);
+  if (!SIMPLE_WORDS[lang1]) SIMPLE_WORDS[lang1] = await loadJson(`data/simple-words/${lang1}.json`);
+  if (showLang2 && !SIMPLE_WORDS[lang2]) SIMPLE_WORDS[lang2] = await loadJson(`data/simple-words/${lang2}.json`);
 
   simpleWordsEl.innerHTML = "";
-  simpleWordsEl.className = "grid grid-cols-2 gap-4";
 
   SIMPLE_WORDS[lang1].forEach((group, groupIndex) => {
     const groupContainer = document.createElement("div");
@@ -274,7 +273,7 @@ document.getElementById("timerMinutes").onchange = saveSettings;
 
 // -------------------- Init --------------------
 async function init() {
-  CATEGORIES = await loadJson("/data/target-words/index.json");
+  CATEGORIES = await loadJson("data/target-words/index.json");
 
   Object.entries(LANG_MAP).forEach(([code,name])=>{
     const opt1=document.createElement("option"); opt1.value=code; opt1.textContent=name; languageEl.appendChild(opt1);

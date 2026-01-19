@@ -1,108 +1,198 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Person Do Thing</title>
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  <style type="text/tailwindcss">
-    @layer components {
-      .chip { @apply px-2 py-1 bg-slate-700 rounded text-sm flex flex-col items-center; }
-    }
-  </style>
-</head>
-<body class="bg-slate-900 text-white font-sans min-h-screen flex flex-col">
+  <head>
+    <!-- Meta Data -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Denis Zholob" />
+    <meta name="keywords" content="Denis, Zholob" />
+    <meta name="title" content="Person Do Thing" />
+    <meta
+      name="description"
+      content="Online recreation of a game where you describe and guess words using a limited amount of simple words."
+    />
 
-  <!-- Header -->
-  <header class="bg-slate-800 p-2 flex justify-between items-center">
-    <h1 class="text-xl font-bold">Person Do Thing</h1>
-    <div class="relative">
-      <button id="settingsToggle" class="px-3 py-1 bg-slate-700 rounded">Settings ⚙️</button>
-      <div id="settingsDropdown" class="absolute right-0 mt-2 p-4 w-80 bg-slate-800 rounded shadow-lg hidden flex-col gap-2 z-50">
-        <!-- Role -->
-        <div>
-          <label>Role:</label>
-          <label><input type="radio" name="role" value="narrator"> Narrator</label>
-          <label><input type="radio" name="role" value="guesser"> Guesser</label>
-        </div>
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://cf.geekdo-images.com/Bj4r4BVqJSqKyQE-9GPHow__opengraph/img/C-OSQfnshSEPik0jLDG6v2ELN6g=/0x181:546x467/fit-in/1200x630/filters:strip_icc()/pic9273562.png
+"
+    />
+    <title>Person Do Thing</title>
+    
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+      @layer components {
+        .chip {
+          @apply px-2 py-1 bg-slate-700 rounded text-sm flex flex-col items-center;
+        }
+      }
+    </style>
+  </head>
 
-        <!-- Language -->
-        <div>
-          <label>Language:</label>
-          <select id="language" class="ml-2 bg-slate-700 rounded"></select>
-        </div>
+  <body class="bg-slate-900 text-white font-sans min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="bg-slate-800 p-2 flex justify-between items-center">
+      <h1 class="text-xl font-bold">Person Do Thing</h1>
+      <div class="relative">
+        <button id="settingsToggle" class="px-3 py-1 bg-slate-700 rounded">
+          Settings ⚙️
+        </button>
+        <div
+          id="settingsDropdown"
+          class="absolute right-0 mt-2 p-4 w-80 bg-slate-800 rounded shadow-lg hidden flex-col gap-2 z-50"
+        >
+          <!-- Role -->
+          <div>
+            <label>Role:</label>
+            <label
+              ><input type="radio" name="role" value="narrator" />
+              Narrator</label
+            >
+            <label
+              ><input type="radio" name="role" value="guesser" /> Guesser</label
+            >
+          </div>
 
-        <!-- Second Language -->
-        <div>
-          <label><input type="checkbox" id="secondLanguageEnabled"> Show second language</label>
-          <select id="secondLanguage" class="ml-2 bg-slate-700 rounded hidden"></select>
-        </div>
+          <!-- Language -->
+          <div>
+            <label>Language:</label>
+            <select id="language" class="ml-2 bg-slate-700 rounded"></select>
+          </div>
 
-        <!-- Timer -->
-        <div id="timerSettings">
-          <label><input type="checkbox" id="timerEnabled"> Enable timer</label>
-          <input type="number" id="timerMinutes" min="1" max="10" value="2" class="ml-2 w-16 bg-slate-700 rounded"> minutes
-        </div>
+          <!-- Second Language -->
+          <div>
+            <label
+              ><input type="checkbox" id="secondLanguageEnabled" /> Show second
+              language</label
+            >
+            <select
+              id="secondLanguage"
+              class="ml-2 bg-slate-700 rounded hidden"
+            ></select>
+          </div>
 
-        <!-- Categories -->
-        <div id="categoriesContainerWrapper">
-          <label>Categories:</label>
-          <div id="categoriesSection" class="ml-2 flex flex-col gap-1"></div>
-          <div id="totalWordCount" class="text-xs mt-1 text-slate-300"></div>
-        </div>
+          <!-- Timer -->
+          <div id="timerSettings">
+            <label
+              ><input type="checkbox" id="timerEnabled" /> Enable timer</label
+            >
+            <input
+              type="number"
+              id="timerMinutes"
+              min="1"
+              max="10"
+              value="2"
+              class="ml-2 w-16 bg-slate-700 rounded"
+            />
+            minutes
+          </div>
 
-        <!-- Restore solved words -->
-        <div class="flex gap-2 mt-2">
-          <button onclick="restoreAllSolved()" class="px-2 py-1 bg-green-700 rounded text-xs">Restore All Solved</button>
-          <button onclick="restoreLastSolved()" class="px-2 py-1 bg-yellow-700 rounded text-xs">Restore Last Solved</button>
+          <!-- Categories -->
+          <div id="categoriesContainerWrapper">
+            <label>Categories:</label>
+            <div id="categoriesSection" class="ml-2 flex flex-col gap-1"></div>
+            <div id="totalWordCount" class="text-xs mt-1 text-slate-300"></div>
+          </div>
+
+          <!-- Restore solved words -->
+          <div class="flex gap-2 mt-2">
+            <button
+              onclick="restoreAllSolved()"
+              class="px-2 py-1 bg-green-700 rounded text-xs"
+            >
+              Restore All Solved
+            </button>
+            <button
+              onclick="restoreLastSolved()"
+              class="px-2 py-1 bg-yellow-700 rounded text-xs"
+            >
+              Restore Last Solved
+            </button>
+          </div>
         </div>
       </div>
-    </div>
-  </header>
+    </header>
 
-  <!-- Main content -->
-  <main class="flex flex-col flex-1 p-4 gap-4">
-    <!-- Simple words 2x2 -->
-    <div id="simpleWords" class="grid grid-cols-2 gap-4"></div>
+    <!-- Main content -->
+    <main class="flex flex-col flex-1 p-4 gap-4">
+      <!-- Simple words 2x2 -->
+      <div id="simpleWords" class="flex flex-row flex-wrap gap-4"></div>
 
-    <!-- Current word -->
-    <div id="currentWordSection" class="text-center flex flex-col gap-2 items-center">
-      <div id="currentWord" class="text-3xl font-bold">?</div>
-      <div id="currentWordTranslation" class="text-xl text-slate-400 hidden"></div>
-    </div>
+      <!-- Current word -->
+      <div
+        id="currentWordSection"
+        class="text-center flex flex-col gap-2 items-center"
+      >
+        <div id="currentWord" class="text-3xl font-bold">?</div>
+        <div
+          id="currentWordTranslation"
+          class="text-xl text-slate-400 hidden"
+        ></div>
+      </div>
 
-    <!-- Controls (narrator only) -->
-    <div id="wordControls" class="flex justify-center gap-2">
-      <button id="prevWord" class="px-3 py-1 bg-slate-700 rounded">◀ Prev</button>
-      <button id="newWord" class="px-3 py-1 bg-slate-700 rounded">🎲 New</button>
-      <button id="nextWord" class="px-3 py-1 bg-slate-700 rounded">Next ▶</button>
-      <button id="markSolved" class="px-3 py-1 bg-green-700 rounded">✔ Solved</button>
-    </div>
+      <!-- Controls (narrator only) -->
+      <div id="wordControls" class="flex justify-center gap-2">
+        <button id="prevWord" class="px-3 py-1 bg-slate-700 rounded">
+          ◀ Prev
+        </button>
+        <button id="newWord" class="px-3 py-1 bg-slate-700 rounded">
+          🎲 New
+        </button>
+        <button id="nextWord" class="px-3 py-1 bg-slate-700 rounded">
+          Next ▶
+        </button>
+        <button id="markSolved" class="px-3 py-1 bg-green-700 rounded">
+          ✔ Solved
+        </button>
+      </div>
 
-    <!-- Timer display -->
-    <div id="timerContainer" class="flex items-center justify-center gap-2 text-xl font-bold">
-      <div id="timerDisplay">0</div>
-      <br>
-      <button id="startTimerBtn" class="px-2 py-1 bg-green-700 rounded text-xs">Start</button>
-      <button id="pauseTimerBtn" class="px-2 py-1 bg-yellow-700 rounded text-xs">Pause</button>
-      <button id="resetTimerBtn" class="px-2 py-1 bg-red-700 rounded text-xs">Reset</button>
-    </div>
-  </main>
+      <!-- Timer display -->
+      <div
+        id="timerContainer"
+        class="flex items-center justify-center gap-2 text-xl font-bold"
+      >
+        <div id="timerDisplay">0</div>
+        <br />
+        <button
+          id="startTimerBtn"
+          class="px-2 py-1 bg-green-700 rounded text-xs"
+        >
+          Start
+        </button>
+        <button
+          id="pauseTimerBtn"
+          class="px-2 py-1 bg-yellow-700 rounded text-xs"
+        >
+          Pause
+        </button>
+        <button id="resetTimerBtn" class="px-2 py-1 bg-red-700 rounded text-xs">
+          Reset
+        </button>
+      </div>
+    </main>
 
-  <!-- Footer -->
-  <footer class="bg-slate-800 p-2 text-sm text-center">
-    <p>
-      <strong>Narrator:</strong> Describe your "target word" in 2 minutes or less using only the 34 simple words.
-       <br>
-       <strong>Guesser:</strong> Ask questions to guess word.
-      <br>
-      <a href="https://persondothing.com/howto.html" class="underline text-blue-400">persondothing.com</a></p>
-  </footer>
+    <!-- Footer -->
+    <footer class="bg-slate-800 p-2 text-sm text-center">
+      <p>
+        <strong>Narrator:</strong> Describe your "target word" in 2 minutes or
+        less using only the 34 simple words.
+        <br />
+        <strong>Guesser:</strong> Ask questions to guess word.
+        <br />
+        <a
+          href="https://persondothing.com/howto.html"
+          class="underline text-blue-400"
+          >persondothing.com</a
+        >
+      </p>
+    </footer>
 
-  <script type="module" src="app.js"></script>
-  <script>
-    document.getElementById("settingsToggle").onclick = () => {
-      document.getElementById("settingsDropdown").classList.toggle("hidden");
-    };
-  </script>
-</body>
+    <script type="module" src="app.js"></script>
+    <script>
+      document.getElementById("settingsToggle").onclick = () => {
+        document.getElementById("settingsDropdown").classList.toggle("hidden");
+      };
+    </script>
+  </body>
 </html>
