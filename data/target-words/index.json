@@ -1,0 +1,5 @@
+[
+  { "id": "thing", "label": "Thing (Easy)" },
+  { "id": "more-thing", "label": "More Thing (Medium)" },
+  { "id": "many-thing", "label": "Many Thing (Hard)" }
+]
