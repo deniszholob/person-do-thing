@@ -1,0 +1,151 @@
+{
+  "angular-files-generator.customTemplateFolder": ".vscode/ngfg-templates",
+  "angular-files-generator.useOnlyCustomTemplates": false,
+  "angular-files-generator.generateSpec": 0,
+  "angular-files-generator.generateStories": 3,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "always",
+    "source.fixAll.eslint": "always"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.linkedEditing": true,
+  "editor.renderWhitespace": "all",
+  "editor.rulers": [80, 100],
+  // Case sensitive file ordering in tree
+  "explorer.sortOrderLexicographicOptions": "lower",
+  // Enable thge inline display if inferred types for ts
+  "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
+  "typescript.inlayHints.parameterTypes.enabled": true,
+  "typescript.inlayHints.propertyDeclarationTypes.enabled": true,
+  "typescript.inlayHints.variableTypes.enabled": true,
+  // Enable thge inline display if inferred types for ts
+  "javascript.inlayHints.functionLikeReturnTypes.enabled": true,
+  "javascript.inlayHints.parameterTypes.enabled": true,
+  "javascript.inlayHints.propertyDeclarationTypes.enabled": true,
+  "javascript.inlayHints.variableTypes.enabled": true,
+  // Editor Icon Theme
+  "workbench.iconTheme": "material-icon-theme",
+  "material-icon-theme.activeIconPack": "angular_ngrx",
+  "material-icon-theme.folders.associations": {
+    "interceptors": "guard",
+    "wrappers": "hook",
+    "forms": "docs"
+  },
+  "material-icon-theme.folders.customClones": [
+    {
+      "name": "components",
+      "folderNames": ["components"],
+      "base": "components",
+      "color": "blue-700"
+    },
+    {
+      "name": "directives",
+      "folderNames": ["directives"],
+      "base": "components",
+      "color": "purple-400"
+    },
+    {
+      "name": "formly",
+      "folderNames": ["formly"],
+      "base": "docs",
+      "color": "red-500"
+    }
+  ],
+  "material-icon-theme.files.associations": {
+    "*.interceptor.ts": "angular-guard",
+    "*.events.ts": "tcl",
+    "*.data.ts": "database",
+    "*.const.ts": "database",
+    "index.ts": "url",
+    "public-api.ts": "url",
+    "models.ts": "url",
+    "services.ts": "url"
+  },
+  "material-icon-theme.files.customClones": [
+    {
+      "name": "typescript-model",
+      "fileExtensions": ["model.ts"],
+      "base": "typescript",
+      "color": "red-400"
+    },
+    {
+      "name": "typescript-enum",
+      "fileExtensions": ["enum.ts"],
+      "base": "typescript",
+      "color": "teal-400"
+    },
+    {
+      "name": "typescript-util",
+      "fileExtensions": ["util.ts"],
+      "base": "typescript",
+      "color": "light-green-600"
+    },
+    {
+      "name": "typescript-mock",
+      "fileExtensions": ["mock.ts"],
+      "base": "typescript",
+      "color": "brown-400"
+    }
+  ],
+  "workbench.editor.pinnedTabsOnSeparateRow": true,
+  "files.associations": {
+    "*.css": "tailwindcss",
+    "*.scss": "tailwindcss"
+  },
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  // Do not include tailwind.config.js as its necessary for tailwind extension to work
+  "files.exclude": {
+    "**/.angular": true,
+    "**/.babelrc": true,
+    "**/.firebase": true,
+    "**/.github": true,
+    "**/.husky": true,
+    "**/.nx": true,
+    "**/.storybook": true,
+    "**/ci": true,
+    "**/coverage/": true,
+    "**/dist/": true,
+    "**/e2e": true,
+    "**/node_modules": true,
+    "**/screenshots/": true,
+    "**/src/app/app.config.ts": true,
+    "**/src/app/app.modified.ts": true,
+    "**/src/environments": true,
+    "**/src/icons": true,
+    "**/src/meta": true,
+    "**/src/main.ts": true,
+    "**/src/test-setup.ts": true,
+    "**/tools/": true,
+    "**/.browserslistrc": true,
+    "**/.editorconfig": true,
+    "**/.eslint*": true,
+    "**/eslint.config.mjs": true,
+    "**/.firebaserc": true,
+    "**/.gitignore": true,
+    "**/.gitkeep": true,
+    "**/.gitlab-ci.yml": true,
+    "**/.npmrc": true,
+    "**/.prettier*": true,
+    "documentation.json": true,
+    "**/firebase.json": true,
+    "**/jest*": true,
+    "**/vitest.workspace.ts": true,
+    "**/ngsw-config.json": true,
+    "**/nx.json": true,
+    "**/package-lock.json": true,
+    "**/project.json": true,
+    "**/pnpm-lock.yaml": true,
+    "**/tsconfig**": true,
+    "**/FUNDING.yml": true,
+    "**/LICENSE": true,
+    "**/NX-README.md": true,
+    "**/test-setup*": true,
+    "**/*.d.ts": true,
+    "**/.env": true,
+    "**/debug.log": true
+  },
+  "cSpell.words": [],
+}
