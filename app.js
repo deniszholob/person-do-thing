@@ -140,11 +140,11 @@ async function renderSimpleWords() {
 
   SIMPLE_WORDS[lang1].forEach((group, groupIndex) => {
     const groupContainer = document.createElement("div");
-    groupContainer.className = "p-2 rounded-lg border border-zinc-700/50 flex flex-wrap gap-2 w-full";
+    groupContainer.className = "p-px rounded-md border border-rose-300/30 flex flex-wrap gap-1 w-full";
 
     group.forEach((word, wordIndex) => {
       const chip = document.createElement("div");
-      chip.className = "px-4 py-2 flex-1 bg-zinc-800 rounded text-md flex flex-col items-center";
+      chip.className = "px-3 py-1 flex-1 bg-zinc-800 rounded text-md flex flex-col items-center";
 
       const primary = document.createElement("span");
       primary.textContent = word;
