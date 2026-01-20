@@ -18,30 +18,33 @@
       href="https://cf.geekdo-images.com/Bj4r4BVqJSqKyQE-9GPHow__opengraph/img/C-OSQfnshSEPik0jLDG6v2ELN6g=/0x181:546x467/fit-in/1200x630/filters:strip_icc()/pic9273562.png
 "
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+
+
     <title>Person Do Thing</title>
     
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style type="text/tailwindcss">
       @layer components {
-        .chip {
-          @apply px-2 py-1 bg-slate-700 rounded text-sm flex flex-col items-center;
-        }
       }
     </style>
   </head>
 
-  <body class="bg-slate-900 text-white font-sans min-h-screen flex flex-col">
+  <body class="bg-zinc-900 text-white font-sans min-h-screen flex flex-col">
     <!-- Header -->
-    <header class="bg-slate-800 p-2 flex justify-between items-center">
-      <h1 class="text-xl font-bold">Person Do Thing</h1>
+    <header class="bg-zinc-800 p-0 flex justify-between items-center">
+      <h1 class="text-xl font-bold px-4 tracking-wider">Person Do Thing</h1>
       <div class="relative">
-        <button id="settingsToggle" class="px-3 py-1 bg-slate-700 rounded">
-          Settings ⚙️
+        <button id="settingsToggle" class="px-3 py-1 bg-zinc-700 text-rose-400 hover:text-rose-300 cursor-pointer">
+          <i class="fa-solid fa-gear"></i>
         </button>
+
         <div
           id="settingsDropdown"
-          class="absolute right-0 mt-2 p-4 w-80 bg-slate-800 rounded shadow-lg hidden flex-col gap-2 z-50"
+          class="absolute right-0 p-4 w-80 bg-zinc-800 rounded shadow-lg shadow-black hidden flex-col gap-2 z-50 border border-zinc-950 flex"
         >
+          <h1 class="text-lg text-center border-b border-black mb-2">Settings</h1>
+
           <!-- Role -->
           <div>
             <label>Role:</label>
@@ -55,22 +58,25 @@
           </div>
 
           <!-- Language -->
+           <div>
+            
           <div>
             <label>Language:</label>
-            <select id="language" class="ml-2 bg-slate-700 rounded"></select>
+            <select id="language" class="ml-2 bg-zinc-700 rounded"></select>
           </div>
 
           <!-- Second Language -->
           <div>
             <label
-              ><input type="checkbox" id="secondLanguageEnabled" /> Show second
+              ><input type="checkbox" id="secondLanguageEnabled" /> Second
               language</label
             >
             <select
               id="secondLanguage"
-              class="ml-2 bg-slate-700 rounded hidden"
+              class="ml-2 bg-zinc-700 rounded hidden"
             ></select>
           </div>
+           </div>
 
           <!-- Timer -->
           <div id="timerSettings">
@@ -83,7 +89,7 @@
               min="1"
               max="10"
               value="2"
-              class="ml-2 w-16 bg-slate-700 rounded"
+              class="ml-2 w-16 bg-zinc-700 rounded"
             />
             minutes
           </div>
@@ -91,21 +97,21 @@
           <!-- Categories -->
           <div id="categoriesContainerWrapper">
             <label>Categories:</label>
-            <div id="categoriesSection" class="ml-2 flex flex-col gap-1"></div>
-            <div id="totalWordCount" class="text-xs mt-1 text-slate-300"></div>
+            <div id="categoriesSection" class="ml-2 flex flex-col "></div>
+            <div id="totalWordCount" class="text-xs mt-1 text-zinc-300"></div>
           </div>
 
           <!-- Restore solved words -->
           <div class="flex gap-2 mt-2">
             <button
-              onclick="restoreAllSolved()"
-              class="px-2 py-1 bg-green-700 rounded text-xs"
+              id="restoreAllSolvedBtn"
+              class="px-2 py-1 bg-rose-800 border-rose-800 border-2 hover:border-rose-700 hover:bg-rose-700 rounded text-xs"
             >
               Restore All Solved
             </button>
             <button
-              onclick="restoreLastSolved()"
-              class="px-2 py-1 bg-yellow-700 rounded text-xs"
+              id="restoreLastSolvedBtn"
+              class="px-2 py-1 bg-zinc-800 border-rose-800 border-3 hover:border-rose-700 rounded text-xs"
             >
               Restore Last Solved
             </button>
@@ -117,7 +123,7 @@
     <!-- Main content -->
     <main class="flex flex-col flex-1 p-4 gap-4">
       <!-- Simple words 2x2 -->
-      <div id="simpleWords" class="flex flex-row flex-wrap gap-4"></div>
+      <div id="simpleWords" class="flex flex-row flex-wrap gap-4 max-w-md mx-auto"></div>
 
       <!-- Current word -->
       <div
@@ -127,23 +133,23 @@
         <div id="currentWord" class="text-3xl font-bold">?</div>
         <div
           id="currentWordTranslation"
-          class="text-xl text-slate-400 hidden"
+          class="text-xl text-zinc-400 hidden"
         ></div>
       </div>
 
       <!-- Controls (narrator only) -->
       <div id="wordControls" class="flex justify-center gap-2">
-        <button id="prevWord" class="px-3 py-1 bg-slate-700 rounded">
-          ◀ Prev
+        <button id="prevWord" class="px-3 py-1 bg-zinc-700 hover:bg-zinc-600 rounded cursor-pointer">
+          <i class="fa-solid fa-caret-left"></i> Prev
         </button>
-        <button id="newWord" class="px-3 py-1 bg-slate-700 rounded">
-          🎲 New
+        <button id="newWord" class="px-3 py-1 bg-rose-800 hover:bg-rose-700 rounded cursor-pointer">
+          <i class="fa-solid fa-shuffle"></i> New
         </button>
-        <button id="nextWord" class="px-3 py-1 bg-slate-700 rounded">
-          Next ▶
+        <button id="nextWord" class="px-3 py-1 bg-zinc-700 hover:bg-zinc-600 rounded cursor-pointer">
+          Next <i class="fa-solid fa-caret-right"></i>
         </button>
-        <button id="markSolved" class="px-3 py-1 bg-green-700 rounded">
-          ✔ Solved
+        <button id="markSolved" class="px-3 py-1 bg-zinc-700 hover:bg-zinc-600 rounded cursor-pointer">
+          <i class="fa-solid fa-check"></i> Mark Solved
         </button>
       </div>
 
@@ -156,24 +162,24 @@
         <br />
         <button
           id="startTimerBtn"
-          class="px-2 py-1 bg-green-700 rounded text-xs"
+          class="px-2 py-1 border-2 bg-zinc-800 border-rose-800 hover:border-rose-700 rounded text-xs cursor-pointer"
         >
-          Start
+          <i class="fa-solid fa-play"></i>
         </button>
         <button
           id="pauseTimerBtn"
-          class="px-2 py-1 bg-yellow-700 rounded text-xs"
+          class="px-2 py-1 bg-zinc-800 border-2 border-rose-800 hover:border-rose-700 rounded text-xs cursor-pointer"
         >
-          Pause
+          <i class="fa-solid fa-pause"></i>
         </button>
-        <button id="resetTimerBtn" class="px-2 py-1 bg-red-700 rounded text-xs">
-          Reset
+        <button id="resetTimerBtn" class="px-2 py-1 bg-zinc-800 border-2 border-rose-800 hover:border-rose-700 rounded text-xs cursor-pointer">
+          <i class="fa-solid fa-clock-rotate-left"></i>
         </button>
       </div>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-slate-800 p-2 text-sm text-center">
+    <footer class="bg-zinc-800 p-2 text-sm text-center">
       <p>
         <strong>Narrator:</strong> Describe your "target word" in 2 minutes or
         less using only the 34 simple words.

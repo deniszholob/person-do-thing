@@ -99,7 +99,7 @@ async function renderCategories() {
     span.textContent = cat.label;
 
     const countSpan = document.createElement("span");
-    countSpan.className = "ml-1 text-xs text-slate-300";
+    countSpan.className = "ml-1 text-xs text-zinc-300";
     countSpan.id = `count-${cat.id}`;
 
     label.appendChild(checkbox);
@@ -140,11 +140,11 @@ async function renderSimpleWords() {
 
   SIMPLE_WORDS[lang1].forEach((group, groupIndex) => {
     const groupContainer = document.createElement("div");
-    groupContainer.className = "p-3 rounded-xl bg-slate-700/40 flex flex-wrap gap-2";
+    groupContainer.className = "p-2 rounded-lg border border-zinc-700/50 flex flex-wrap gap-2 w-full";
 
     group.forEach((word, wordIndex) => {
       const chip = document.createElement("div");
-      chip.className = "chip";
+      chip.className = "px-4 py-2 flex-1 bg-zinc-800 rounded text-md flex flex-col items-center";
 
       const primary = document.createElement("span");
       primary.textContent = word;
@@ -156,7 +156,7 @@ async function renderSimpleWords() {
         if (translated) {
           const secondary = document.createElement("span");
           secondary.textContent = translated;
-          secondary.className = "text-xs text-slate-400";
+          secondary.className = "text-sm text-zinc-400";
           chip.appendChild(secondary);
         }
       }
@@ -270,6 +270,14 @@ secondLangEnabledEl.onchange = () => { secondLangEl.classList.toggle("hidden", !
 document.querySelectorAll('input[name="role"]').forEach(r => r.addEventListener("change", updateRoleVisibility));
 document.getElementById("timerEnabled").onchange = saveSettings;
 document.getElementById("timerMinutes").onchange = saveSettings;
+
+document
+  .getElementById("restoreAllSolvedBtn")
+  .addEventListener("click", restoreAllSolved);
+
+document
+  .getElementById("restoreLastSolvedBtn")
+  .addEventListener("click", restoreLastSolved);
 
 // -------------------- Init --------------------
 async function init() {
